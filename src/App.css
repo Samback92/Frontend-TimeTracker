@@ -3,15 +3,15 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+} 
 
-.logo {
+#taskDiv {
   height: 6em;
-  padding: 1.5em;
+  padding: 2.5em;
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover {
+#taskDiv:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.react:hover {
