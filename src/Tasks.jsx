@@ -1,37 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import Timer from './Timer';
 
-//interface behövs inte i js
-// interface Task {
-// 	id: String,
-// 	taskName: String
-// }
-
 function Tasks() {
 
 	const [tasks,setTasks] = useState([]);
-
 	const [newTask, setNewTask] = useState("");
 
 	const addTask = (e) => {
 		// e.preventDefault();
+
+		const currentTime = new Date().toISOString(); // Konvertera till UTC
 		
 		fetch("http://localhost:8080/tasks", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json"
 			},
-			body: JSON.stringify({taskName: newTask})
+			body: JSON.stringify({taskName: newTask, isCompleted: false, startDate: currentTime})
 		})
 		.then(() => setNewTask(""))
-		.then(() => fetchTasks()); // Hämta uppdaterade tasks		
+		// .then(() => fetchTasks())
+		.then(() => window.location.reload());		
 	}
 
 	const fetchTasks = () => {
-        fetch("http://localhost:8080/tasks")
-        .then(res => res.json())
-        .then(data => setTasks(data));
-    }
+		fetch("http://localhost:8080/tasks")
+		.then(res => res.json())
+		.then(data => {
+			console.log("Fetched tasks:", data);
+			setTasks(data.filter(task => !task.isCompleted));
+		});
+	}
 
 	useEffect(() => {
 		fetchTasks();

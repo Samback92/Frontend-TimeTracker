@@ -80,6 +80,29 @@ function Timer({ task }) {
 		window.location.reload();
     };
 
+    const removeTask = () => {
+       
+
+        const updatedTrackedTime = task.trackedTime 
+            ? convertToSeconds(task.trackedTime) + elapsedTime 
+            : elapsedTime;
+
+        fetch(`http://localhost:8080/tasks/${task.id}/complete`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ...task,
+                trackedTime: convertToMinutes(updatedTrackedTime),
+                startTime: null,
+                isCompleted: true
+            })
+        })
+        // .then(fetchTasks);
+        .then(() => window.location.reload());
+    };
+
     const convertToMinutes = (seconds) => {
         return `${Math.floor(seconds / 60)}m ${seconds % 60}s`;
     };
@@ -103,6 +126,7 @@ function Timer({ task }) {
             <div>Ongoing Time: {Math.floor(elapsedTime / 60)}:{('0' + elapsedTime % 60).slice(-2)}</div>
             <button onClick={startTimer} disabled={isActive}>Start</button>
             <button onClick={stopTimer} disabled={!isActive}>Stop</button>
+            <button onClick={removeTask} disabled={task.isCompleted}>Done</button>
             <div>Total Time Tracked: {task.trackedTime || "0m 0s"}</div>
         </div>
     );
