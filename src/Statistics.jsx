@@ -6,11 +6,8 @@ function Statistics() {
 
     useEffect(() => {
         fetch("http://localhost:8080/tasks")
-		.then(res => res.json())
-		.then(data => {
-			console.log("Fetched tasks:", data);
-			setTasks(data.filter(task => task.isCompleted));
-        })
+        .then(res => res.json())
+        .then(data => setTasks(data.filter(task => task.isCompleted)));
     }, []);
 
     const sortTasks = (tasks, option) => {

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import './App.css'
 import Tasks from './Tasks'
 import Statistics from './Statistics'
-import Start from './Start'
 
 function App() {
 
@@ -24,7 +23,7 @@ function App() {
         pageUrl = getUrl;
         setPage(getUrl)
       } else {
-        pageUrl = "start"
+        pageUrl = "task"
       }
     } 
     
@@ -38,8 +37,6 @@ function App() {
   return (
     <>
       <h1>TimeTracker</h1>
-
-      <button onClick={() => setPage("start")}>Start</button>
       <button onClick={() => setPage("tasks")}>Tasks</button>
       <button onClick={() => setPage("statistics")}>Statistics</button>
 
@@ -48,11 +45,9 @@ function App() {
       {
         { 
           /* Switch som väljer vilken komponent som visas */ 
-
-          "start" : <Start/>,
           "tasks" : <Tasks/>,
           "statistics" : <Statistics/>
-        } [page] || <Start/>
+        } [page] || <Tasks/>
       }
     </>
   )
