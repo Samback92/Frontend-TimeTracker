@@ -79,6 +79,8 @@ function Statistics() {
                             <div>{task.taskName}</div><br />
                             <div>TrackedTime: {task.trackedTime}</div>
                             <div>StartDate: {formatDate(task.startDate)}</div>
+                            <br />
+                            <button type="submit">Delete</button>
                             
                         
                         </div>
