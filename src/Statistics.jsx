@@ -89,13 +89,12 @@ function Statistics() {
 
                     {sortedTasks.map((task) => (
                         <div id='statsDiv' key={task.id}>
-                            <div>{task.taskName}</div><br />
-                            <div>TrackedTime: {task.trackedTime}</div>
-                            <div>StartDate: {formatDate(task.startDate)}</div>
-                            <br />
+                            <div>
+                                <div>{task.taskName}</div>
+                                <div>TrackedTime: {task.trackedTime}</div>
+                                <div>StartDate: {formatDate(task.startDate)}</div>
+                            </div>
                             <button onClick={() => handleDelete(task.id)}>Delete</button>
-                            <br />
-                        
                         </div>
                         
                     ))}
