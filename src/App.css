@@ -16,13 +16,13 @@
 }
 
 #statsDiv {
-  height: 4em;
-  padding: 2em;
+  height: 4.5em;
+  padding: 2.5em;
   will-change: filter;
   transition: filter 300ms;
 }
 #statsDiv:hover {
-  filter: drop-shadow(0 0 1em #646cff);
+  filter: drop-shadow(0 0 2em #646cff);
 }
 
 @keyframes logo-spin {
