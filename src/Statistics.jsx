@@ -5,7 +5,7 @@ function Statistics() {
 	const [sortOption, setSortOption] = useState('taskName'); // default sorteringsalternativ
 
     useEffect(() => {
-        fetch("http://localhost:8080/tasks")
+        fetch("https://hammerhead-app-dbxxw.ondigitalocean.app/tasks")
         .then(res => res.json())
         .then(data => setTasks(data.filter(task => task.isCompleted)));
     }, []);
