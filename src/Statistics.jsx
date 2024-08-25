@@ -57,6 +57,19 @@ function Statistics() {
 		return date.toISOString().split('T')[0]; // Format YYYY-MM-DD
 	};
 
+    const handleDelete = (taskId) => {
+        fetch(`https://hammerhead-app-dbxxw.ondigitalocean.app/tasks/${taskId}`, {
+            method: 'DELETE',
+        })
+        .then(res => {
+            if (res.ok) {
+                setTasks(tasks.filter(task => task.id !== taskId));
+            } else {
+                console.error('Failed to delete task');
+            }
+        });
+    };
+
 	const sortedTasks = sortTasks(tasks, sortOption);
 
     return (
@@ -80,8 +93,8 @@ function Statistics() {
                             <div>TrackedTime: {task.trackedTime}</div>
                             <div>StartDate: {formatDate(task.startDate)}</div>
                             <br />
-                            <button type="submit">Delete</button>
-                            
+                            <button onClick={() => handleDelete(task.id)}>Delete</button>
+                            <br />
                         
                         </div>
                         
