@@ -40,7 +40,7 @@ function Timer({ task }) {
         setIsActive(true); 
 
         // Fetchar tasken och uppdaterar starttiden i databasen till currenttime (sätter en stämpel när den startas)
-        fetch(`http://localhost:8080/tasks/${task.id}`, {
+        fetch(`https://hammerhead-app-dbxxw.ondigitalocean.app/tasks/${task.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -62,7 +62,7 @@ function Timer({ task }) {
             : elapsedTime;
 
         // Spara uppdaterad total tid och nollställ pågående tid i databasen
-        fetch(`http://localhost:8080/tasks/${task.id}`, {
+        fetch(`https://hammerhead-app-dbxxw.ondigitalocean.app/tasks/${task.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -87,7 +87,7 @@ function Timer({ task }) {
             ? convertToSeconds(task.trackedTime) + elapsedTime 
             : elapsedTime;
 
-        fetch(`http://localhost:8080/tasks/${task.id}/complete`, {
+        fetch(`https://hammerhead-app-dbxxw.ondigitalocean.app/tasks/${task.id}/complete`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
