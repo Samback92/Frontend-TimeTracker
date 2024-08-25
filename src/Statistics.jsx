@@ -60,28 +60,33 @@ function Statistics() {
 	const sortedTasks = sortTasks(tasks, sortOption);
 
     return (
-		<div>
-			<h1>Statistics</h1>
+        <>
+            <div>
+                <div>
+                  <h1>Statistics</h1>  
+                </div>
+                <div>
+                    <label htmlFor="sort">Sort by: </label>
+                    <select id="sort" value={sortOption} onChange={handleSortChange}>
+                        <option value="taskName">Task Name</option>
+                        <option value="trackedTime">Tracked Time</option>
+                        <option value="startDate">Start Date</option>
+                        <option value="last7Days">Last 7 Days</option>
+                    </select>
 
-			<label htmlFor="sort">Sort by: </label>
-            <select id="sort" value={sortOption} onChange={handleSortChange}>
-                <option value="taskName">Task Name</option>
-                <option value="trackedTime">Tracked Time</option>
-                <option value="startDate">Start Date</option>
-				<option value="last7Days">Last 7 Days</option>
-            </select>
-
-			{sortedTasks.map((task) => (
-				<div key={task.id}>
-					<div>{task.taskName}</div>
-					<div>TrackedTime: {task.trackedTime}</div>
-					<div>StartDate: {formatDate(task.startDate)}</div>
-					<br />
-				
-				</div>
-				
-			))}
-		</div>
+                    {sortedTasks.map((task) => (
+                        <div id='statsDiv' key={task.id}>
+                            <div>{task.taskName}</div><br />
+                            <div>TrackedTime: {task.trackedTime}</div>
+                            <div>StartDate: {formatDate(task.startDate)}</div>
+                            
+                        
+                        </div>
+                        
+                    ))}
+                </div>
+            </div>
+        </>
 	);
 }
 

@@ -14,8 +14,15 @@
 #taskDiv:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+#statsDiv {
+  height: 4em;
+  padding: 2em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+#statsDiv:hover {
+  filter: drop-shadow(0 0 1em #646cff);
 }
 
 @keyframes logo-spin {
