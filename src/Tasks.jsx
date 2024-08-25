@@ -11,7 +11,7 @@ function Tasks() {
 
 		const currentTime = new Date().toISOString(); // Konvertera till UTC
 		
-		fetch("http://localhost:8080/tasks", {
+		fetch("https://hammerhead-app-dbxxw.ondigitalocean.app/tasks", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json"
@@ -24,7 +24,7 @@ function Tasks() {
 	}
 
 	const fetchTasks = () => {
-		fetch("http://localhost:8080/tasks")
+		fetch("https://hammerhead-app-dbxxw.ondigitalocean.app/tasks")
 		.then(res => res.json())
 		.then(data => {
 			console.log("Fetched tasks:", data);
