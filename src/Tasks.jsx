@@ -6,7 +6,7 @@ function Tasks() {
 	const [tasks,setTasks] = useState([]);
 	const [newTask, setNewTask] = useState("");
 
-	const addTask = (e) => {
+	const addTask = () => {
 		// e.preventDefault();
 
 		const currentTime = new Date().toISOString(); // Konvertera till UTC
