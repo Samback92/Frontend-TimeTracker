@@ -22,7 +22,7 @@ function Tasks() {
 	}
 
 	const fetchTasks = () => {
-		fetch(`https://hammerhead-app-dbxxw.ondigitalocean.app/tasks`)
+		fetch("https://hammerhead-app-dbxxw.ondigitalocean.app/tasks")
 		.then(res => res.json())
 		.then(data => {
 			console.log("Fetched tasks:", data);
