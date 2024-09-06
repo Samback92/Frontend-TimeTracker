@@ -19,9 +19,6 @@ function Tasks() {
 		.then(() => setNewTask(""))
 		// .then(() => fetchTasks())
 		.then(() => window.location.reload())
-		.catch(error => {
-			console.error('Error adding task:', error);
-		});	
 	}
 
 	const fetchTasks = () => {
@@ -31,9 +28,6 @@ function Tasks() {
 			console.log("Fetched tasks:", data);
 			setTasks(data.filter(task => !task.isCompleted));
 		})
-		.catch(error => {
-			console.error('Error fetching tasks:', error);
-		});
 	}
 
 	useEffect(() => {
