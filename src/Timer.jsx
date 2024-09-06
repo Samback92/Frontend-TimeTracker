@@ -43,7 +43,7 @@ function Timer({ task }) {
         fetch(`https://hammerhead-app-dbxxw.ondigitalocean.app/tasks/${task.id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json; charset=utf-8"
             },
             body: JSON.stringify({
                 ...task,
@@ -65,7 +65,7 @@ function Timer({ task }) {
         fetch(`https://hammerhead-app-dbxxw.ondigitalocean.app/tasks/${task.id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json; charset=utf-8"
             },
             body: JSON.stringify({
                 ...task,
@@ -90,7 +90,7 @@ function Timer({ task }) {
         fetch(`https://hammerhead-app-dbxxw.ondigitalocean.app/tasks/${task.id}/complete`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json; charset=utf-8"
             },
             body: JSON.stringify({
                 ...task,

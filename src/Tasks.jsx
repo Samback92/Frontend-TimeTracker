@@ -7,28 +7,32 @@ function Tasks() {
 	const [newTask, setNewTask] = useState("");
 
 	const addTask = () => {
-		// e.preventDefault();
-
 		const currentTime = new Date().toISOString(); // Konvertera till UTC
 		
-		fetch("https://hammerhead-app-dbxxw.ondigitalocean.app/tasks", {
+		fetch(`https://hammerhead-app-dbxxw.ondigitalocean.app/tasks`, {
 			method: "POST",
 			headers: {
-				"content-type": "application/json"
+				"Content-Type": "application/json; charset=utf-8"
 			},
 			body: JSON.stringify({taskName: newTask, isCompleted: false, startDate: currentTime})
 		})
 		.then(() => setNewTask(""))
 		// .then(() => fetchTasks())
-		.then(() => window.location.reload());		
+		.then(() => window.location.reload())
+		.catch(error => {
+			console.error('Error adding task:', error);
+		});	
 	}
 
 	const fetchTasks = () => {
-		fetch("https://hammerhead-app-dbxxw.ondigitalocean.app/tasks")
+		fetch(`https://hammerhead-app-dbxxw.ondigitalocean.app/tasks`)
 		.then(res => res.json())
 		.then(data => {
 			console.log("Fetched tasks:", data);
 			setTasks(data.filter(task => !task.isCompleted));
+		})
+		.catch(error => {
+			console.error('Error fetching tasks:', error);
 		});
 	}
 
