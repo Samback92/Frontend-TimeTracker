@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 function Timer({ task }) {
     const [isActive, setIsActive] = useState(false); // är aktiv
@@ -131,5 +132,16 @@ function Timer({ task }) {
         </div>
     );
 }
+
+Timer.propTypes = {
+    task: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        taskName: PropTypes.string.isRequired,
+        startTime: PropTypes.number,
+        trackedTime: PropTypes.string,
+        isCompleted: PropTypes.bool.isRequired
+    }).isRequired
+};
+
 
 export default Timer;
